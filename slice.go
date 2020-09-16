@@ -1,24 +1,22 @@
 package main
 
 import (
-	"fmt"
-
 	"golang.org/x/tour/pic"
 )
 
 // Pic shows me money
 func Pic(dx, dy int) [][]uint8 {
-	row := []uint8{}
+	rows := make([][]uint8, dy)
 	for i := 0; i < dy; i++ {
-		row = append(row, uint8(dx))
+		rows[i] = make([]uint8, dx)
 	}
 
-	rows := [][]uint8{}
 	for i := 0; i < dy; i++ {
-		rows = append(rows, row)
+		for j := 0; j < dx; j++ {
+			rows[i][j] = uint8(i * j)
+		}
 	}
 
-	fmt.Println(rows)
 	return rows
 }
 
